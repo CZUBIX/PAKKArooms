@@ -6,7 +6,7 @@ import plugins
 import commands
 
 if not os.path.exists("config.ini"):
-    open("config.ini", "w").write("[config]\nhost=127.0.0.1\nport=2202\njoined={} joined the room\nleft={} left the room\ncommandnotfound=command not foundslots=10")
+    open("config.ini", "w").write("[config]\nhost=127.0.0.1\nport=2202\njoined={} joined the room\nleft={} left the room\ncommandnotfound=command not found\nslots=10")
 
 config = configparser.ConfigParser()
 config.read("config.ini")
