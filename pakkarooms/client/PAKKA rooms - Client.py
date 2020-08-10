@@ -1,4 +1,3 @@
-import queue
 import socket
 import threading
 import configparser
