@@ -38,9 +38,12 @@ def message_handler(con, addr):
             data = con.recv(1024).decode()
             if data.startswith("USERNAME"):
                 username = data.split("=")[1]
-                send(joined.format(username))
-                print(joined.format(username))
-                usernames[con] = username
+                if not username in usernames.values() and len(username) > 2:
+                    send(joined.format(username))
+                    print(joined.format(username))
+                    usernames[con] = username
+                else:
+                    remove(con)
             else:
                 if data.split(": ")[1][0] == "/":
                     command = data.split(": ")[1].split(" ")[0][1:]
@@ -69,6 +72,8 @@ def remove(con):
         print(left.format(usernames[con]))
         send(left.format(usernames[con]))
         del usernames[con]
+
+    con.close()
 
 def console():
     while True:
