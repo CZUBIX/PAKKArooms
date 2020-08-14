@@ -21,6 +21,11 @@ sock = socket.socket()
 sock.bind((host, port))
 sock.listen(slots)
 
+def get_user(username):
+    for client in usernames:
+        if usernames[client] == username:
+            return client
+
 def send(data):
     for client in clients:
         try:
@@ -28,12 +33,7 @@ def send(data):
         except:
             if hasattr(commands, "events"):
                 if "on_error" in commands.events:
-                    class _clients:
-                        clients = usernames
-                        send = send
-                        remove = remove
-
-                    commands.events["on_error"](_clients, client, "senderror")
+                    commands.events["on_error"](_clients, con, "senderror")
                 
 def message_handler(con, addr):
     while True:
@@ -45,11 +45,6 @@ def message_handler(con, addr):
                     usernames[con] = username
                     if hasattr(commands, "events"):
                         if "on_join" in commands.events:
-                            class _clients:
-                                clients = usernames
-                                send = send
-                                remove = remove
-
                             commands.events["on_join"](_clients, con)
                 else:
                     remove(con)
@@ -63,11 +58,6 @@ def message_handler(con, addr):
                                 if "on_error" in commands.events:
                                     commands.events["on_error"](usernames, con, "commandnotfound")
                         else:
-                            class _clients:
-                                clients = usernames
-                                send = send
-                                remove = remove
-
                             class msg:
                                 command = data.split(": ")[1].split(" ")[0][1:]
                                 args = data.split(": ")[1].split(" ")[1:]
@@ -75,16 +65,12 @@ def message_handler(con, addr):
                             commands.commands[command](_clients, con, msg)
                             print(f"[COMMAND] {usernames[con]} used the {msg.command} command")
                 else:
-                    print(f"[ROOM] {data}")
-                    send(data.encode())
+                    if hasattr(commands, "events"):
+                        if "on_message" in commands.events:
+                            commands.events["on_message"](_clients, con, data.split(": ")[1])
         except:
             if hasattr(commands, "events"):
                 if "on_error" in commands.events:
-                    class _clients:
-                        clients = usernames
-                        send = send
-                        remove = remove
-
                     commands.events["on_error"](_clients, con, "unknown")
 
 def remove(con):
@@ -94,11 +80,6 @@ def remove(con):
     if con in usernames:
         if hasattr(commands, "events"):
             if "on_left" in commands.events:
-                class _clients:
-                    clients = usernames
-                    send = send
-                    remove = remove
-                    
                 commands.events["on_left"](_clients, con)
 
         del usernames[con]
@@ -110,6 +91,12 @@ def console():
         message = input()
         send(f"[CONSOLE] {message}".encode())
         print(f"[CONSOLE] {message}")
+
+class _clients:
+    clients = usernames
+    send = send
+    remove = remove
+    get_user = get_user
 
 print(f"Running on {host}:{port}")
 threading.Thread(target=console).start()
