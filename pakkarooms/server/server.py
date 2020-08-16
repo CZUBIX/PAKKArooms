@@ -16,6 +16,7 @@ slots = config.getint("config", "slots")
 
 clients = []
 usernames = {}
+addresses = {}
 
 sock = socket.socket()
 sock.bind((host, port))
@@ -26,6 +27,11 @@ def get_user(username):
         if usernames[client] == username:
             return client
 
+def get_address(username):
+    for address in addresses:
+        if addresses[address] == username:
+            return address
+
 def send(data):
     for client in clients:
         try:
@@ -33,7 +39,7 @@ def send(data):
         except:
             if hasattr(commands, "events"):
                 if "on_error" in commands.events:
-                    commands.events["on_error"](_clients, con, "senderror")
+                    commands.events["on_error"](_clients, client, "senderror")
                 
 def message_handler(con, addr):
     while True:
@@ -43,6 +49,7 @@ def message_handler(con, addr):
                 username = data.split("=")[1]
                 if not username in usernames.values() and len(username) > 2:
                     usernames[con] = username
+                    addresses[addr] = username
                     if hasattr(commands, "events"):
                         if "on_join" in commands.events:
                             commands.events["on_join"](_clients, con)
@@ -84,27 +91,46 @@ def remove(con):
 
         del usernames[con]
 
+    if con in addresses:
+        del addresses[con]
+
     con.close()
 
 def console():
     while True:
-        message = input()
-        send(f"[CONSOLE] {message}".encode())
-        print(f"[CONSOLE] {message}")
+        text = input()
+
+        class msg:
+            command = text.split(" ")[0]
+            args = text.split(" ")[1:]
+
+        commands.console_commands[text.split(" ")[0]](_clients, msg)
 
 class _clients:
     clients = usernames
     send = send
     remove = remove
     get_user = get_user
+    get_address = get_address
 
-print(f"Running on {host}:{port}")
+class colors:
+    BLACK = "\u001b[30m"
+    RED = "\u001b[31m"
+    GREEN = "\u001b[32m"
+    YELLOW = "\u001b[33m"
+    BLUE = "\u001b[34m"
+    MAGENTA = "\u001b[35m"
+    CYAN = "\u001b[36m"
+    WHITE = "\u001b[37m"
+    RESET = "\u001b[0m"
+
+print(colors.GREEN + f"Running on {host}:{port}" + colors.RESET)
 threading.Thread(target=console).start()
 
 while True:
     con, addr = sock.accept()
     
-    print(f"{addr[0]}:{addr[1]} connected")
+    print(colors.MAGENTA + f"{addr[0]}:{addr[1]} connected" + colors.RESET)
     clients.append(con)
-    
+
     threading.Thread(target=message_handler, args=(con, addr)).start()
