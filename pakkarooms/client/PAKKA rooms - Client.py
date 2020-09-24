@@ -4,7 +4,7 @@ import configparser
 import os.path
 
 if not os.path.exists("config.ini"):
-    open("config.ini", "w").write("[autocomplete]\nenable=false\nhost=127.0.0.1\nport=2202\nusername=PAKKArooms")
+    open("config.ini", "w").write("[autocomplete]\nenable=false\nhost=127.0.0.1\nport=2202\nusername=POLIGONrooms")
 
 config = configparser.ConfigParser()
 config.read("config.ini")
