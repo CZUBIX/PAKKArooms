@@ -1,0 +1,10 @@
+D:\projekty\POLIGONrooms - Client v1.0\POLIGONrooms - Client v1.0\bin\Debug\POLIGONrooms - Client v1.0.exe.config
+D:\projekty\POLIGONrooms - Client v1.0\POLIGONrooms - Client v1.0\bin\Debug\POLIGONrooms - Client v1.0.exe
+D:\projekty\POLIGONrooms - Client v1.0\POLIGONrooms - Client v1.0\bin\Debug\POLIGONrooms - Client v1.0.pdb
+D:\projekty\POLIGONrooms - Client v1.0\POLIGONrooms - Client v1.0\obj\Debug\POLIGONrooms - Client v1.0.csprojAssemblyReference.cache
+D:\projekty\POLIGONrooms - Client v1.0\POLIGONrooms - Client v1.0\obj\Debug\POLIGONrooms___Client_v1._0.Form1.resources
+D:\projekty\POLIGONrooms - Client v1.0\POLIGONrooms - Client v1.0\obj\Debug\POLIGONrooms___Client_v1._0.Properties.Resources.resources
+D:\projekty\POLIGONrooms - Client v1.0\POLIGONrooms - Client v1.0\obj\Debug\POLIGONrooms - Client v1.0.csproj.GenerateResource.cache
+D:\projekty\POLIGONrooms - Client v1.0\POLIGONrooms - Client v1.0\obj\Debug\POLIGONrooms - Client v1.0.csproj.CoreCompileInputs.cache
+D:\projekty\POLIGONrooms - Client v1.0\POLIGONrooms - Client v1.0\obj\Debug\POLIGONrooms - Client v1.0.exe
+D:\projekty\POLIGONrooms - Client v1.0\POLIGONrooms - Client v1.0\obj\Debug\POLIGONrooms - Client v1.0.pdb
