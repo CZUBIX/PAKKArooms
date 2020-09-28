@@ -1,5 +1,7 @@
 # Welcome to poligon rooms!
+
 If you want to create your own server, go to https://github.com/CZUBIX/POLIGONrooms and download poligonrooms/server.
+
 Then, do the following:
     1. If you haven't already, install the latest python version from https://www.python.org/downloads/
     2. Start server.py and close it right after (just to create the config.ini file)
