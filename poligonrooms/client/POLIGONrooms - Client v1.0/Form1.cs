@@ -12,7 +12,7 @@ namespace POLIGONrooms___Client_v1._0
 {
     public partial class Form1 : Form
     {
-        const string ServerText = "Welcome to poligon rooms!\nGo to the \"client\" tab to connect to a server. If you want to create your own go to https://github.com/CZUBIX/POLIGONrooms and download poligonrooms/server.\n\nThen, do the following:\n    1. If you haven't already, install the latest python version from https://www.python.org/downloads/\n    2. Start server.py and close it right after (just to create the config.ini file)\n    3. Start server.py after config.ini is configured properly\n    4. Invite friends to your server!\n\nYou can also write custom plugins, which requires programming knowledge. If you have any problems, contact us. (https://discord.gg/3V3Z5sX)";
+        const string ServerText = "Welcome to poligon rooms!\nGo to the \"client\" tab to connect to a server. If you want to create your own go to https://github.com/CZUBIX/POLIGONrooms and download poligonrooms/server.\n\nThen, do the following:\n    1. If you haven't already, install the latest python version from https://www.python.org/downloads/\n    2. Start server.py and close it right after (just to create the config.ini file)\n    3. Start server.py after config.ini is configured properly\n    4. Invite friends to your server!\n\nYou can also write custom plugins, which requires programming knowledge. If you have any problems, contact us. (https://discord.gg/w9FYqMDV)";
 
         Socket sock = null;
 
