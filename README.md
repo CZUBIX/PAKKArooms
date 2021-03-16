@@ -9,4 +9,4 @@ Then, do the following:
     3. Start server.py after config.ini is configured properly
     4. Invite friends to your server!
     
-You can also write custom plugins, which requires programming knowledge. If you have any problems, contact us. (https://discord.gg/w9FYqMDV)
+You can also write custom plugins, which requires programming knowledge.
